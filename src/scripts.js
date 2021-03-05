@@ -15,7 +15,6 @@ function createBoard() {
   const boardElement = document.querySelector('#board');
   const elements = [];
 
-  
   function createElement(options) {
     let { item, top, left } = options;
     
@@ -150,22 +149,136 @@ function createBoard() {
   }
 }
 
+
 const board = createBoard();
 
-board.createItem({ item: 'chest', top: TILE_SIZE * 2, left: TILE_SIZE * 18 });
-board.createItem({ item: 'trap', top: TILE_SIZE * 12, left: TILE_SIZE * 8 });
+const dificult = parseInt(prompt("Selecione uma dificuldade: \n 1-Fácil \n 2-Médio \n 3-difícil"));
+
+switch (dificult) {
+  case 1:
+    board.createHero({ top: TILE_SIZE * 17, left: TILE_SIZE * 3 });
+    board.createItem({ item: 'chest', top: TILE_SIZE * 10, left: TILE_SIZE * 10 });
+    board.createItem({ item: 'trap', top: TILE_SIZE * 12, left: TILE_SIZE * 8 });
+    board.createItem({ item: 'trap', top: TILE_SIZE * 14, left: TILE_SIZE * 15 });
+    board.createItem({ item: 'trap', top: TILE_SIZE * 15, left: TILE_SIZE * 8 });
+    board.createItem({ item: 'trap', top: TILE_SIZE * 10, left: TILE_SIZE * 15 });
+    board.createDemon({ top: TILE_SIZE * 14, left: TILE_SIZE * 12 });
+    board.createDemon({ top: TILE_SIZE * 13, left: TILE_SIZE * 12 });
+    board.createDemon({ top: TILE_SIZE * 11, left: TILE_SIZE * 12 });
+    board.createDemon({ top: TILE_SIZE * 10, left: TILE_SIZE * 7 });
+    board.createDemon({ top: TILE_SIZE * 9, left: TILE_SIZE * 7 });
+    board.createDemon({ top: TILE_SIZE * 10, left: TILE_SIZE * 7 });
+    board.createDemon({ top: TILE_SIZE * 5, left: TILE_SIZE * 8 });
+    board.createDemon({ top: TILE_SIZE * 5, left: TILE_SIZE * 7 });
+    board.createDemon({ top: TILE_SIZE * 5, left: TILE_SIZE * 6 });
+    break;
+  case 2:
+    board.createHero({ top: TILE_SIZE * 17, left: TILE_SIZE * 3 });
+    board.createItem({ item: 'chest', top: TILE_SIZE * 2, left: TILE_SIZE * 10 });
+    board.createItem({ item: 'trap', top: TILE_SIZE * 12, left: TILE_SIZE * 8 });
+    board.createItem({ item: 'trap', top: TILE_SIZE * 14, left: TILE_SIZE * 15 });
+    board.createItem({ item: 'trap', top: TILE_SIZE * 15, left: TILE_SIZE * 8 });
+    board.createItem({ item: 'trap', top: TILE_SIZE * 10, left: TILE_SIZE * 15 });
+    board.createItem({ item: 'trap', top: TILE_SIZE * 5, left: TILE_SIZE * 15 });
+    board.createItem({ item: 'trap', top: TILE_SIZE * 5, left: TILE_SIZE * 7 });
+    board.createItem({ item: 'trap', top: TILE_SIZE * 10, left: TILE_SIZE * 10 });
+    board.createItem({ item: 'trap', top: TILE_SIZE * 5, left: TILE_SIZE * 3 });
+    board.createItem({ item: 'trap', top: TILE_SIZE * 12, left: TILE_SIZE * 8 });
+    board.createItem({ item: 'trap', top: TILE_SIZE * 10, left: TILE_SIZE * 4});
+    board.createDemon({ top: TILE_SIZE * 14, left: TILE_SIZE * 12 });
+    board.createDemon({ top: TILE_SIZE * 14, left: TILE_SIZE * 12 });
+    board.createDemon({ top: TILE_SIZE * 14, left: TILE_SIZE * 12 });
+    board.createDemon({ top: TILE_SIZE * 10, left: TILE_SIZE * 7 });
+    board.createDemon({ top: TILE_SIZE * 10, left: TILE_SIZE * 7 });
+    board.createDemon({ top: TILE_SIZE * 10, left: TILE_SIZE * 7 });
+    board.createDemon({ top: TILE_SIZE * 5, left: TILE_SIZE * 7 });
+    board.createDemon({ top: TILE_SIZE * 5, left: TILE_SIZE * 7 });
+    board.createDemon({ top: TILE_SIZE * 5, left: TILE_SIZE * 7 });
+    board.createDemon({ top: TILE_SIZE * 3, left: TILE_SIZE * 10 });
+    board.createDemon({ top: TILE_SIZE * 3, left: TILE_SIZE * 10 });
+    board.createDemon({ top: TILE_SIZE * 3, left: TILE_SIZE * 10 });
+    break;
+  case 3:
+    board.createHero({ top: TILE_SIZE * 17, left: TILE_SIZE * 1 });
+    board.createItem({ item: 'chest', top: TILE_SIZE * 2, left: TILE_SIZE * 18 });
+    board.createItem({ item: 'trap', top: TILE_SIZE * 12, left: TILE_SIZE * 8 });
+    board.createItem({ item: 'trap', top: TILE_SIZE * 14, left: TILE_SIZE * 15 });
+    board.createItem({ item: 'trap', top: TILE_SIZE * 15, left: TILE_SIZE * 8 });
+    board.createItem({ item: 'trap', top: TILE_SIZE * 10, left: TILE_SIZE * 15 });
+    board.createItem({ item: 'trap', top: TILE_SIZE * 5, left: TILE_SIZE * 15 });
+    board.createItem({ item: 'trap', top: TILE_SIZE * 5, left: TILE_SIZE * 7 });
+    board.createItem({ item: 'trap', top: TILE_SIZE * 10, left: TILE_SIZE * 10 });
+    board.createItem({ item: 'trap', top: TILE_SIZE * 5, left: TILE_SIZE * 3 });
+    board.createItem({ item: 'trap', top: TILE_SIZE * 12, left: TILE_SIZE * 8 });
+    board.createItem({ item: 'trap', top: TILE_SIZE * 10, left: TILE_SIZE * 4});
+    board.createItem({ item: 'trap', top: TILE_SIZE * 12, left: TILE_SIZE * 7 });
+    board.createItem({ item: 'trap', top: TILE_SIZE * 14, left: TILE_SIZE * 16 });
+    board.createItem({ item: 'trap', top: TILE_SIZE * 16, left: TILE_SIZE * 18 });
+    board.createItem({ item: 'trap', top: TILE_SIZE * 12, left: TILE_SIZE * 5 });
+    board.createItem({ item: 'trap', top: TILE_SIZE * 5, left: TILE_SIZE * 15 });
+    board.createItem({ item: 'trap', top: TILE_SIZE * 16, left: TILE_SIZE * 3 });
+    board.createItem({ item: 'trap', top: TILE_SIZE * 10, left: TILE_SIZE * 10 });
+    board.createItem({ item: 'trap', top: TILE_SIZE * 5, left: TILE_SIZE * 3 });
+    board.createItem({ item: 'trap', top: TILE_SIZE * 6, left: TILE_SIZE * 2 });
+    board.createItem({ item: 'trap', top: TILE_SIZE * 6, left: TILE_SIZE * 4});
+    board.createDemon({ top: TILE_SIZE * 14, left: TILE_SIZE * 12 });
+    board.createDemon({ top: TILE_SIZE * 14, left: TILE_SIZE * 12 });
+    board.createDemon({ top: TILE_SIZE * 14, left: TILE_SIZE * 12 });
+    board.createDemon({ top: TILE_SIZE * 16, left: TILE_SIZE * 15 });
+    board.createDemon({ top: TILE_SIZE * 16, left: TILE_SIZE * 7 });
+    board.createDemon({ top: TILE_SIZE * 16, left: TILE_SIZE * 8 });
+    board.createDemon({ top: TILE_SIZE * 5, left: TILE_SIZE * 7 });
+    board.createDemon({ top: TILE_SIZE * 5, left: TILE_SIZE * 7 });
+    board.createDemon({ top: TILE_SIZE * 5, left: TILE_SIZE * 7 });
+    board.createDemon({ top: TILE_SIZE * 3, left: TILE_SIZE * 10 });
+    board.createDemon({ top: TILE_SIZE * 3, left: TILE_SIZE * 10 });
+    board.createDemon({ top: TILE_SIZE * 3, left: TILE_SIZE * 10 });
+    board.createDemon({ top: TILE_SIZE * 10, left: TILE_SIZE * 12 });
+    board.createDemon({ top: TILE_SIZE * 10, left: TILE_SIZE * 12 });
+    board.createDemon({ top: TILE_SIZE * 10, left: TILE_SIZE * 12 });
+    board.createDemon({ top: TILE_SIZE * 16, left: TILE_SIZE * 7 });
+    board.createDemon({ top: TILE_SIZE * 10, left: TILE_SIZE * 7 });
+    board.createDemon({ top: TILE_SIZE * 10, left: TILE_SIZE * 7 });
+    board.createDemon({ top: TILE_SIZE * 5, left: TILE_SIZE * 7 });
+    board.createDemon({ top: TILE_SIZE * 5, left: TILE_SIZE * 7 });
+    board.createDemon({ top: TILE_SIZE * 5, left: TILE_SIZE * 7 });
+    board.createDemon({ top: TILE_SIZE * 3, left: TILE_SIZE * 10 });
+    board.createDemon({ top: TILE_SIZE * 3, left: TILE_SIZE * 10 });
+    board.createDemon({ top: TILE_SIZE * 3, left: TILE_SIZE * 10 });
+    board.createDemon({ top: TILE_SIZE * 14, left: TILE_SIZE * 12 });
+    board.createDemon({ top: TILE_SIZE * 14, left: TILE_SIZE * 12 });
+    board.createDemon({ top: TILE_SIZE * 14, left: TILE_SIZE * 12 });
+    board.createDemon({ top: TILE_SIZE * 10, left: TILE_SIZE * 7 });
+    board.createDemon({ top: TILE_SIZE * 10, left: TILE_SIZE * 7 });
+    board.createDemon({ top: TILE_SIZE * 10, left: TILE_SIZE * 7 });
+    board.createDemon({ top: TILE_SIZE * 7, left: TILE_SIZE * 7 });
+    board.createDemon({ top: TILE_SIZE * 7, left: TILE_SIZE * 7 });
+    board.createDemon({ top: TILE_SIZE * 7, left: TILE_SIZE * 7 });
+    board.createDemon({ top: TILE_SIZE * 3, left: TILE_SIZE * 10 });
+    board.createDemon({ top: TILE_SIZE * 6, left: TILE_SIZE * 10 });
+    board.createDemon({ top: TILE_SIZE * 3, left: TILE_SIZE * 10 });
+    board.createDemon({ top: TILE_SIZE * 15, left: TILE_SIZE * 16 });
+    board.createDemon({ top: TILE_SIZE * 16, left: TILE_SIZE * 16 });
+    board.createDemon({ top: TILE_SIZE * 17, left: TILE_SIZE * 16 });
+    board.createDemon({ top: TILE_SIZE * 10, left: TILE_SIZE * 7 });
+    board.createDemon({ top: TILE_SIZE * 10, left: TILE_SIZE * 7 });
+    board.createDemon({ top: TILE_SIZE * 10, left: TILE_SIZE * 7 });
+    board.createDemon({ top: TILE_SIZE * 5, left: TILE_SIZE * 7 });
+    board.createDemon({ top: TILE_SIZE * 5, left: TILE_SIZE * 7 });
+    board.createDemon({ top: TILE_SIZE * 5, left: TILE_SIZE * 7 });
+    board.createDemon({ top: TILE_SIZE * 3, left: TILE_SIZE * 10 });
+    board.createDemon({ top: TILE_SIZE * 3, left: TILE_SIZE * 10 });
+    board.createDemon({ top: TILE_SIZE * 3, left: TILE_SIZE * 10 });
+    break;
+  default:
+    alert('valor invalido');
+    location.reload();
+    break;
+}
+
 
 board.createItem({ item: 'forniture', top: TILE_SIZE * 17, left: TILE_SIZE * 2 });
 board.createItem({ item: 'forniture', top: TILE_SIZE * 2, left: TILE_SIZE * 3 });
 board.createItem({ item: 'forniture', top: TILE_SIZE * 2, left: TILE_SIZE * 8 });
 board.createItem({ item: 'forniture', top: TILE_SIZE * 2, left: TILE_SIZE * 16 });
 
-board.createHero({ top: TILE_SIZE * 17, left: TILE_SIZE * 3 });
-
-
-board.createDemon({ top: TILE_SIZE * 7, left: TILE_SIZE * 3 });
-board.createDemon({ top: TILE_SIZE * 7, left: TILE_SIZE * 3 });
-board.createDemon({ top: TILE_SIZE * 7, left: TILE_SIZE * 3 });
-board.createDemon({ top: TILE_SIZE * 7, left: TILE_SIZE * 3 });
-board.createDemon({ top: TILE_SIZE * 7, left: TILE_SIZE * 3 });
-board.createDemon({ top: TILE_SIZE * 7, left: TILE_SIZE * 3 });
