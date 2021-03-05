@@ -13,9 +13,15 @@ root.style.setProperty('--game-size', `${GAME_SIZE}px`);
 
 function createBoard() {
   const boardElement = document.querySelector('#board');
+  const elements = [];
 
+  
   function createElement(options) {
     let { item, top, left } = options;
+    
+    const currentElement = { item, currentPosition: { top, left } };
+
+    elements.push(currentElement);
 
     const htmlElement = document.createElement('div');
     htmlElement.className = item;
@@ -24,35 +30,83 @@ function createBoard() {
 
     boardElement.appendChild(htmlElement)
 
-    function getDirection(buttonPressed) {
+    function getDirection( buttonPressed, position ) {
       switch (buttonPressed){
         case 'ArrowUp':
-          return { top: top - TILE_SIZE, left: left };
+          return { top: position.top - TILE_SIZE, left: position.left };
         case 'ArrowDown':
-          return { top: top + TILE_SIZE, left: left };
+          return { top: position.top + TILE_SIZE, left: position.left };
         case 'ArrowLeft':
-          return { left: left - TILE_SIZE, top: top };
+          return { left: position.left - TILE_SIZE, top: position.top };
         case 'ArrowRight':
-          return { left: left + TILE_SIZE, top: top };
+          return { left: position.left + TILE_SIZE, top: position.top };
         default:
-          return { left: left, top: top };
+          return position;
+      }
+    }
+
+    function validateMoviment(position, conflictItem) {
+      return (
+        position.left >= 48 &&
+        position.left <= 864 &&
+        position.top >= 96 &&
+        position.top <= 816 &&
+        conflictItem?.item !== 'forniture'
+      )
+    }
+
+    function getMovementConflict(position, els) {
+      const conflictItem = els.find((currentElement) => {
+        return(
+          currentElement.currentPosition.top == position.top &&
+          currentElement.currentPosition.left == position.left
+        )
+      });
+
+      return conflictItem;
+    }
+
+    function validateConflicts(currentEl, conflictItem){
+      function finishGame(message){
+        setTimeout(()=>{
+          alert(message)
+          location.reload();
+        }, 100)
+      }
+      if (currentEl.item === 'hero' ) {
+        if (conflictItem?.item === 'mini-demon' ||
+            conflictItem?.item === 'trap') {
+              finishGame('você morreu');
+        }
+        if (conflictItem?.item === 'chest'){
+          finishGame('você ganhou');
+        }
+      }
+
+      if (currentEl.item === 'mini-demon' && conflictItem?.item === 'hero') {
+        finishGame('você morreu');
       }
     }
 
     function move(buttonPressed) {
-      const newDirection = getDirection(buttonPressed);
+      const newPosition = getDirection(buttonPressed, currentElement.currentPosition );
+      const conflictItem = getMovementConflict(newPosition, elements)
+      const isValidMovement = validateMoviment(newPosition, conflictItem);
+      
+      if (isValidMovement) {
+        currentElement.currentPosition = newPosition
+        htmlElement.style.top = `${newPosition.top}px`;
+        htmlElement.style.left = `${newPosition.left}px`;
 
-      top = newDirection.top;
-      left = newDirection.left;
-
-      htmlElement.style.top = `${newDirection.top}px`;
-      htmlElement.style.left = `${newDirection.left}px`;
+        validateConflicts(currentElement, conflictItem)
+      }
     }
 
     return{
       move: move
     }
   }
+  //-----------------------------------------------------------
 
   function createItem(options) {
     createElement(options);
@@ -101,5 +155,17 @@ const board = createBoard();
 board.createItem({ item: 'chest', top: TILE_SIZE * 2, left: TILE_SIZE * 18 });
 board.createItem({ item: 'trap', top: TILE_SIZE * 12, left: TILE_SIZE * 8 });
 
+board.createItem({ item: 'forniture', top: TILE_SIZE * 17, left: TILE_SIZE * 2 });
+board.createItem({ item: 'forniture', top: TILE_SIZE * 2, left: TILE_SIZE * 3 });
+board.createItem({ item: 'forniture', top: TILE_SIZE * 2, left: TILE_SIZE * 8 });
+board.createItem({ item: 'forniture', top: TILE_SIZE * 2, left: TILE_SIZE * 16 });
+
 board.createHero({ top: TILE_SIZE * 17, left: TILE_SIZE * 3 });
+
+
+board.createDemon({ top: TILE_SIZE * 7, left: TILE_SIZE * 3 });
+board.createDemon({ top: TILE_SIZE * 7, left: TILE_SIZE * 3 });
+board.createDemon({ top: TILE_SIZE * 7, left: TILE_SIZE * 3 });
+board.createDemon({ top: TILE_SIZE * 7, left: TILE_SIZE * 3 });
+board.createDemon({ top: TILE_SIZE * 7, left: TILE_SIZE * 3 });
 board.createDemon({ top: TILE_SIZE * 7, left: TILE_SIZE * 3 });
