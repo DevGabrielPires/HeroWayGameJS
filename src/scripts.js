@@ -73,11 +73,19 @@ function createBoard() {
   }
 
   function createDemon(options) {
-    createElement({
+    const demon = createElement({
       item: 'mini-demon',
       top: options.top,
       left: options.left,
     });
+
+    setInterval(() => {
+      const direction = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'];
+      const randomIndex = Math.floor(Math.random() * direction.length);
+      const randomDirection = direction[randomIndex]
+      demon.move(randomDirection);
+    }, 1000) 
+
   }
 
 
